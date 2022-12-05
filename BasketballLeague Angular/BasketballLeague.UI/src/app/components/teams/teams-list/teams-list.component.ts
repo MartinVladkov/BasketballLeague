@@ -13,7 +13,8 @@ export class TeamsListComponent {
     constructor(private teamService: TeamService) {}
   
     ngOnInit () : void {
-      this.teams = this.teamService.getTeams();
-      console.log(this.teams);
+      this.teamService
+        .getTeams()
+        .subscribe((result: Team[]) => (this.teams = result));
     }
 }
