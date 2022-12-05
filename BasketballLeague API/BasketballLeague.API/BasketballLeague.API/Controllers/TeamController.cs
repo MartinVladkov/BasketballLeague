@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BasketballLeague.API.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BasketballLeague.API.Controllers
 {
@@ -6,23 +8,19 @@ namespace BasketballLeague.API.Controllers
     [ApiController]
     public class TeamController : ControllerBase
     {
+        private readonly BasketballLeagueDbContext dbContext;
+
+        public TeamController(BasketballLeagueDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
         [HttpGet]
         public async Task<ActionResult<List<Team>>> GetTeams()
         {
-            return new List<Team> { 
-                new Team 
-                {
-                    Name = "LA Lakers"
-                },
-                new Team
-                {
-                    Name = "Boston Celtics"
-                },
-                new Team
-                {
-                    Name = "Chicago Bulls"
-                }
-            };
+            return Ok(await dbContext.Teams
+                .FromSqlRaw<Team>("spGetAllTeams")
+                .ToListAsync());
         }
     }
 }
