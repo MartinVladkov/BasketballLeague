@@ -9,6 +9,9 @@ namespace BasketballLeague.API.Data
 
         public DbSet<Game> Games => Set<Game>();
 
+
+        public DbSet<TeamsGames> TeamsGames => Set<TeamsGames>();
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder
