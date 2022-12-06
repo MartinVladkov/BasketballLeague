@@ -3,3 +3,8 @@
     float: none; 
     margin-bottom: 10px; 
 }
+
+.navbar-nav > li{
+    padding-left:15px;
+    padding-right:15px;
+  }

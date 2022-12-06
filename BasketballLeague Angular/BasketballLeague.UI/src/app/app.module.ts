@@ -9,7 +9,7 @@ import { AllGamesComponent } from './components/games/all-games/all-games.compon
 import { TopOffensiveTeamsComponent } from './components/teams/top-offensive-teams/top-offensive-teams.component';
 import { TopDefensiveTeamsComponent } from './components/teams/top-defensive-teams/top-defensive-teams.component';
 import { HighlightGameComponent } from './components/games/highlight-game/highlight-game.component';
-import { TeamPipe } from './components/teams/teams-list/teams-list.pipe';
+import { TeamPipe } from './components/teams/teams-list/filter.pipe';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
     TopOffensiveTeamsComponent,
     TopDefensiveTeamsComponent,
     HighlightGameComponent, 
-    TeamPipe
+    TeamPipe, 
   ],
   imports: [
     BrowserModule,
