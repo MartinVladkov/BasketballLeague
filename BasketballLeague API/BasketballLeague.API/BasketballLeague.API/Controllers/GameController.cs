@@ -1,5 +1,6 @@
 ﻿using BasketballLeague.API.Data;
 using BasketballLeague.API.Data.Models;
+using BasketballLeague.API.Services.Teams;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,43 +10,24 @@ namespace BasketballLeague.API.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
-        private readonly BasketballLeagueDbContext dbContext;
+        private readonly ITeamGameService teamGame;
 
-        public GameController(BasketballLeagueDbContext dbContext)
+        public GameController(ITeamGameService teamGame)
         {
-            this.dbContext = dbContext;
+            this.teamGame = teamGame;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<TeamsGames>>> GetGames()
         {
-            return Ok(await dbContext.TeamsGames
-                .FromSqlRaw<TeamsGames>("spGetAllGames")
-                .ToListAsync());
+            return Ok(await teamGame.GetGames());
         }
 
         [HttpGet]
         [Route("HighlightGame")]
         public async Task<ActionResult<List<TeamsGames>>> GetHighlightGame()
-        {
-            var allGames = await dbContext.TeamsGames
-               .FromSqlRaw<TeamsGames>("spGetAllGames")
-               .ToListAsync();
-
-            var highlightMatch = allGames
-                .Select(x => new
-                {
-                    x.Id,
-                    x.homeTeam,
-                    x.awayTeam,
-                    x.homeTeamScore,
-                    x.awayTeamScore,
-                    scoreCombined = x.homeTeamScore + x.awayTeamScore
-                })
-                .OrderByDescending(x => x.scoreCombined)
-                .FirstOrDefault();
-                
-            return Ok(highlightMatch);
+        {  
+            return Ok(await teamGame.getHighlightGame());
         }
     }
 }
