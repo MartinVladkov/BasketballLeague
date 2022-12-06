@@ -9,6 +9,8 @@ import { AllGamesComponent } from './components/games/all-games/all-games.compon
 import { TopOffensiveTeamsComponent } from './components/teams/top-offensive-teams/top-offensive-teams.component';
 import { TopDefensiveTeamsComponent } from './components/teams/top-defensive-teams/top-defensive-teams.component';
 import { HighlightGameComponent } from './components/games/highlight-game/highlight-game.component';
+import { TeamPipe } from './components/teams/teams-list/teams-list.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { HighlightGameComponent } from './components/games/highlight-game/highli
     AllGamesComponent,
     TopOffensiveTeamsComponent,
     TopDefensiveTeamsComponent,
-    HighlightGameComponent
+    HighlightGameComponent, 
+    TeamPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

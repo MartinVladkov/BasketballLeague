@@ -8,6 +8,7 @@ import { TeamService } from 'src/app/services/team.service';
   styleUrls: ['./teams-list.component.css']
 })
 export class TeamsListComponent {
+    filter = "";
     teams: Team[] = [];
 
     constructor(private teamService: TeamService) {}
