@@ -11,7 +11,7 @@ export class TopDefensiveTeamsComponent {
     topDefensiveTeams: TopTeam[] = [];
 
     constructor(private topDefensiveTeam: TopDefensiveTeamsService) {}
-  
+    
     ngOnInit () : void {
       this.topDefensiveTeam
         .getTopDefensiveTeams()

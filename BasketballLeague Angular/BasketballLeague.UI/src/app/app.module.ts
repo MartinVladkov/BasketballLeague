@@ -8,6 +8,7 @@ import { TeamsListComponent } from './components/teams/teams-list/teams-list.com
 import { AllGamesComponent } from './components/games/all-games/all-games.component';
 import { TopOffensiveTeamsComponent } from './components/teams/top-offensive-teams/top-offensive-teams.component';
 import { TopDefensiveTeamsComponent } from './components/teams/top-defensive-teams/top-defensive-teams.component';
+import { HighlightGameComponent } from './components/games/highlight-game/highlight-game.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TopDefensiveTeamsComponent } from './components/teams/top-defensive-tea
     TeamsListComponent,
     AllGamesComponent,
     TopOffensiveTeamsComponent,
-    TopDefensiveTeamsComponent
+    TopDefensiveTeamsComponent,
+    HighlightGameComponent
   ],
   imports: [
     BrowserModule,

@@ -4,4 +4,5 @@ export class Game {
     awayTeam = "";
     homeTeamScore?: number;
     awayTeamScore?: number;
+    scoreCombined?: number;
 }
