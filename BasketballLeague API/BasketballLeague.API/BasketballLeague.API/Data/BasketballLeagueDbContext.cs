@@ -28,6 +28,8 @@ namespace BasketballLeague.API.Data
              .HasForeignKey(g => g.awayTeamId)
              .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<TeamsGames>().Metadata.SetIsTableExcludedFromMigrations(true);
+
             base.OnModelCreating(builder);
         }
 

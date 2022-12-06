@@ -50,6 +50,36 @@ namespace BasketballLeague.API.Migrations
                     b.ToTable("Games");
                 });
 
+            modelBuilder.Entity("BasketballLeague.API.Data.Models.TeamsGames", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("awayTeam")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("awayTeamScore")
+                        .HasColumnType("int");
+
+                    b.Property<string>("homeTeam")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("homeTeamScore")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TeamsGames", t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
+                });
+
             modelBuilder.Entity("BasketballLeague.API.Team", b =>
                 {
                     b.Property<int>("Id")

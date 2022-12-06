@@ -24,3 +24,13 @@ export class TopOffensiveTeamsService {
         return this.http.get<TopTeam[]>(`${environment.apiUrl}/Team/${this.url}`);
     }
   }
+
+@Injectable({ providedIn: 'root'})
+export class TopDefensiveTeamsService {
+    private url = "TopDefensiveTeams";  
+    constructor(private http: HttpClient) { }
+
+    public getTopDefensiveTeams() : Observable<TopTeam[]> {
+        return this.http.get<TopTeam[]>(`${environment.apiUrl}/Team/${this.url}`);
+    }
+}
