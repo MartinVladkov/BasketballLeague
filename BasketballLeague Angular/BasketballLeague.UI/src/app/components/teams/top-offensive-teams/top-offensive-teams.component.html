@@ -1,0 +1,17 @@
+<div class="container ml-5">
+    <h1 class="mb-3 mt-3">All Games</h1>
+    <table class="table ml-5">
+        <thead>
+            <th>#</th>
+            <th>Team Name</th>
+            <th>Total Score</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let team of topOffensiveTeams; let i= index">
+                <td>{{i+1}}</td>
+                <td>{{ team.key}}</td>
+                <td>{{ team.value}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

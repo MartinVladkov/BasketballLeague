@@ -15,6 +15,6 @@ export class TeamsListComponent {
     ngOnInit () : void {
       this.teamService
         .getTeams()
-        .subscribe((result: Team[]) => (this.teams = result));
+        .subscribe((result: Team[]) => (this.teams = result.sort((a, b) => (a.name > b.name) ? 1 : -1)));
     }
 }

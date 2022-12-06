@@ -5,11 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TeamsListComponent } from './components/teams/teams-list/teams-list.component';
+import { AllGamesComponent } from './components/games/all-games/all-games.component';
+import { TopOffensiveTeamsComponent } from './components/teams/top-offensive-teams/top-offensive-teams.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TeamsListComponent
+    TeamsListComponent,
+    AllGamesComponent,
+    TopOffensiveTeamsComponent
   ],
   imports: [
     BrowserModule,

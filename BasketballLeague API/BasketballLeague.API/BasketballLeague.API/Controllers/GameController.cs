@@ -24,7 +24,8 @@ namespace BasketballLeague.API.Controllers
                 .ToListAsync());
         }
 
-        [HttpGet("/HighlightGame")]
+        [HttpGet]
+        [Route("HighlightGame")]
         public async Task<ActionResult<List<TeamsGames>>> GetHighlightGame()
         {
             var allGames = await dbContext.TeamsGames

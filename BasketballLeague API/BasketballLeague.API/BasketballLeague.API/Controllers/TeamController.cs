@@ -24,7 +24,8 @@ namespace BasketballLeague.API.Controllers
                 .ToListAsync());
         }
 
-        [HttpGet("/TopOffensiveTeams")]
+        [HttpGet]
+        [Route("TopOffensiveTeams")]
         public async Task<ActionResult<List<TeamsGames>>> GetTopOffensiveTeams()
         {
             var allGames = await dbContext.TeamsGames
@@ -57,7 +58,8 @@ namespace BasketballLeague.API.Controllers
             return Ok(response); 
         }
 
-        [HttpGet("/TopDefensiveTeams")]
+        [HttpGet]
+        [Route("TopDefensiveTeams")]
         public async Task<ActionResult<List<TeamsGames>>> GetTopDefensiveTeams()
         {
             var allGames = await dbContext.TeamsGames
