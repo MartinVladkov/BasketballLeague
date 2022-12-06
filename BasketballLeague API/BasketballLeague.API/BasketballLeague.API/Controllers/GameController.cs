@@ -23,5 +23,28 @@ namespace BasketballLeague.API.Controllers
                 .FromSqlRaw<TeamsGames>("spGetAllGames")
                 .ToListAsync());
         }
+
+        [HttpGet("/HighlightGame")]
+        public async Task<ActionResult<List<TeamsGames>>> GetHighlightGame()
+        {
+            var allGames = await dbContext.TeamsGames
+               .FromSqlRaw<TeamsGames>("spGetAllGames")
+               .ToListAsync();
+
+            var highlightMatch = allGames
+                .Select(x => new
+                {
+                    x.Id,
+                    x.homeTeam,
+                    x.awayTeam,
+                    x.homeTeamScore,
+                    x.awayTeamScore,
+                    scoreCombined = x.homeTeamScore + x.awayTeamScore
+                })
+                .OrderByDescending(x => x.scoreCombined)
+                .FirstOrDefault();
+                
+            return Ok(highlightMatch);
+        }
     }
 }
