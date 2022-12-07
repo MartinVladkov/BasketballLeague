@@ -11,8 +11,8 @@ namespace BasketballLeague.API.Services.Teams
 
         Task<HighlightGame> getHighlightGame();
 
-        Task<IEnumerable<KeyValuePair<string, int>>> getTeamsScoredPoints();
+        Task<List<TeamScore>> getTeamsScoredPoints();
 
-        Task<IEnumerable<KeyValuePair<string, int>>> getTeamsOpponentsPoints();
+        Task<List<TeamScore>> getTeamsOpponentsPoints();
     }
 }

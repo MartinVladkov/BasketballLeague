@@ -1,4 +1,5 @@
 ﻿using BasketballLeague.API.Data.Models;
+using BasketballLeague.API.Services.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BasketballLeague.API.Data
@@ -9,8 +10,12 @@ namespace BasketballLeague.API.Data
 
         public DbSet<Game> Games => Set<Game>();
 
-
         public DbSet<TeamsGames> TeamsGames => Set<TeamsGames>();
+
+        public DbSet<TeamScore> TeamsScores => Set<TeamScore>();
+
+        public DbSet<HighlightGame> HighlightGames => Set<HighlightGame>();
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -29,6 +34,8 @@ namespace BasketballLeague.API.Data
              .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<TeamsGames>().Metadata.SetIsTableExcludedFromMigrations(true);
+            builder.Entity<TeamScore>().Metadata.SetIsTableExcludedFromMigrations(true);
+            builder.Entity<HighlightGame>().Metadata.SetIsTableExcludedFromMigrations(true);
 
             base.OnModelCreating(builder);
         }

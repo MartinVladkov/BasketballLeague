@@ -32,84 +32,31 @@ namespace BasketballLeague.API.Services.Teams
             return allGames;
         }
 
-        public async Task<IEnumerable<KeyValuePair<string,int>>> getTeamsScoredPoints()
+        public async Task<List<TeamScore>> getTeamsScoredPoints()
         {
-            var allGames = await GetGames();
+            var teamsScore = await data.TeamsScores
+                .FromSqlRaw<TeamScore>("spGetTeamsScore")
+                .ToListAsync();
 
-            var teams = allGames
-                .Select(x => x.homeTeam)
-                .Distinct();
-
-            Dictionary<string, int> topOffensiveTeams = new Dictionary<string, int>();
-
-            foreach (var team in teams)
-            {
-                var scoresAsHomeTeam = allGames
-                    .Select(x => x)
-                    .Where(x => x.homeTeam == team)
-                    .Sum(x => x.homeTeamScore);
-
-                var scoresAsAwayTeam = allGames
-                    .Select(x => x)
-                    .Where(x => x.awayTeam == team)
-                    .Sum(x => x.awayTeamScore);
-
-                topOffensiveTeams[team] = scoresAsHomeTeam + scoresAsAwayTeam;
-            }
-
-            var response = topOffensiveTeams.OrderByDescending(x => x.Value);
-
-            return response;
+            return teamsScore;
         }
 
-        public async Task<IEnumerable<KeyValuePair<string, int>>> getTeamsOpponentsPoints()
+        public async Task<List<TeamScore>> getTeamsOpponentsPoints()
         {
-            var allGames = await GetGames();
+            var teamsOponentsScore = await data.TeamsScores
+                .FromSqlRaw<TeamScore>("spGetTeamsOponentsScore")
+                .ToListAsync();
 
-            var teams = allGames
-                .Select(x => x.homeTeam)
-                .Distinct();
-
-            Dictionary<string, int> topDefensiveTeams = new Dictionary<string, int>();
-
-            foreach (var team in teams)
-            {
-                var awayOponentsScore = allGames
-                    .Select(x => x)
-                    .Where(x => x.homeTeam == team)
-                    .Sum(x => x.awayTeamScore);
-
-                var homeOponentsScore = allGames
-                    .Select(x => x)
-                    .Where(x => x.awayTeam == team)
-                    .Sum(x => x.homeTeamScore);
-
-                topDefensiveTeams[team] = awayOponentsScore + homeOponentsScore;
-            }
-
-            var response = topDefensiveTeams.OrderBy(x => x.Value);
-
-            return response;
+            return teamsOponentsScore;
         }
 
         public async Task<HighlightGame> getHighlightGame()
         {
-            var allGames = await GetGames();
+            var highlightGame = await data.HighlightGames
+                .FromSqlRaw<HighlightGame>("spGetHighlightGame")
+                .ToListAsync();
 
-            var highlightMatch = allGames
-                .Select(x => new HighlightGame
-                {
-                    Id = x.Id,
-                    homeTeam = x.homeTeam,
-                    awayTeam = x.awayTeam,
-                    homeTeamScore = x.homeTeamScore,
-                    awayTeamScore = x.awayTeamScore,
-                    scoreCombined = x.homeTeamScore + x.awayTeamScore
-                })
-                .OrderByDescending(x => x.scoreCombined)
-                .FirstOrDefault();
-
-            return highlightMatch;
+            return highlightGame.FirstOrDefault();
         }
     }
 }

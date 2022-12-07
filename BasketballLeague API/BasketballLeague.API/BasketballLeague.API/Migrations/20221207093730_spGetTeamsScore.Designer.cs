@@ -3,6 +3,7 @@ using BasketballLeague.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BasketballLeague.API.Migrations
 {
     [DbContext(typeof(BasketballLeagueDbContext))]
-    partial class BasketballLeagueDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221207093730_spGetTeamsScore")]
+    partial class spGetTeamsScore
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,29 +51,6 @@ namespace BasketballLeague.API.Migrations
                     b.HasIndex("homeTeamId");
 
                     b.ToTable("Games");
-                });
-
-            modelBuilder.Entity("BasketballLeague.API.Data.Models.TeamScore", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("totalScore")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TeamsScores", t =>
-                        {
-                            t.ExcludeFromMigrations();
-                        });
                 });
 
             modelBuilder.Entity("BasketballLeague.API.Data.Models.TeamsGames", b =>
