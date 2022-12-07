@@ -11,6 +11,7 @@ import { TopDefensiveTeamsComponent } from './components/teams/top-defensive-tea
 import { HighlightGameComponent } from './components/games/highlight-game/highlight-game.component';
 import { TeamPipe } from './components/teams/teams-list/filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
