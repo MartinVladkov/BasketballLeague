@@ -1,8 +1,6 @@
-﻿using BasketballLeague.API.Data;
-using BasketballLeague.API.Data.Models;
+﻿using BasketballLeague.API.Data.Models;
 using BasketballLeague.API.Services.Teams;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BasketballLeague.API.Controllers
 {

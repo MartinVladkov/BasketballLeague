@@ -1,10 +1,10 @@
-﻿namespace BasketballLeague.API.Services.Teams
-{
-    using BasketballLeague.API.Data;
-    using BasketballLeague.API.Data.Models;
-    using BasketballLeague.API.Services.Models;
-    using Microsoft.EntityFrameworkCore;
+﻿using BasketballLeague.API.Data;
+using BasketballLeague.API.Data.Models;
+using BasketballLeague.API.Services.Models;
+using Microsoft.EntityFrameworkCore;
 
+namespace BasketballLeague.API.Services.Teams
+{
     public class TeamGameService : ITeamGameService
     {
         private BasketballLeagueDbContext data { get; set; }
