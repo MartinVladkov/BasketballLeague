@@ -11,8 +11,8 @@
         <tbody>
             <tr *ngFor="let team of topOffensiveTeams; let i= index">
                 <td>{{i+1}}</td>
-                <td>{{ team.key}}</td>
-                <td>{{ team.value}}</td>
+                <td>{{team.name}}</td>
+                <td>{{team.totalScore}}</td>
             </tr>
         </tbody>
     </table>
