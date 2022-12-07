@@ -20,12 +20,12 @@ Alternative solution on the 🔷 [**service branch**](https://github.com/MartinV
 - Highlight match with most scored points combined
 
 ## Screenshots
-![Navigation](images/navigation.PNG)
-![All Teams](images/all_teams.PNG)
-![Top Offensive Teams](images/top_offensive_teams.PNG)
-![Top Defensive Teams](images/top_defensive_teams.PNG)
-![All_Games](images/all_games.PNG)
-![Highlight Game](images/highlight_game.PNG)
+![Navigation](Images/navigation.PNG)
+![All Teams](Images/all_teams.PNG)
+![Top Offensive Teams](Images/top_offensive_teams.PNG)
+![Top Defensive Teams](Images/top_defensive_teams.PNG)
+![All_Games](Images/all_games.PNG)
+![Highlight Game](Images/highlight_game.PNG)
 
 
  
